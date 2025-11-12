@@ -25,7 +25,14 @@ import java.time.LocalDateTime;
 public class FromMdbToCsv {
 
     public static void main(String[] args) {
+        final String configFilePath;
+        if (args.length > 0)
+            configFilePath = args[0];
+        else
+            configFilePath = "app.config";
+
+        
         Converter converter = new Converter();
-        converter.convertFromAccessToCsvInLevaStyle(ConfigFileLoader.loadConfigFile("app.config"), LocalDateTime.now().minusMonths(3));
+        converter.convertFromAccessToCsvInLevaStyle(ConfigFileLoader.loadConfigFile(configFilePath), LocalDateTime.now().minusMonths(3));
     }
 }
