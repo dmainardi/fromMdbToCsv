@@ -16,6 +16,8 @@
  */
 package com.mainardisoluzioni.frommdbtocsv;
 
+import java.time.LocalDateTime;
+
 /**
  *
  * @author Mainardi Davide <davide at mainardisoluzioni.com>
@@ -23,8 +25,7 @@ package com.mainardisoluzioni.frommdbtocsv;
 public class FromMdbToCsv {
 
     public static void main(String[] args) {
-        Converter.convertFromAccessToCsvInLevaStyle(
-                ConfigFileLoader.loadConfigFile("app.config")
-        );
+        Converter converter = new Converter();
+        converter.convertFromAccessToCsvInLevaStyle(ConfigFileLoader.loadConfigFile("app.config"), LocalDateTime.now().minusMonths(3));
     }
 }
